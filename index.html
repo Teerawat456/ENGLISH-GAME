@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>English Battle</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: sans-serif;
+      background-color: #c0f0ff;
+      background-image: url('assets/grass-bg.png');
+      background-size: cover;
+      max-width: 480px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    #difficulty-select {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #difficulty-select button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+
+    #battle-container {
+      display: none;
+      justify-content: space-around;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .character {
+      text-align: center;
+    }
+
+    .character video, .character img {
+      width: 64px;
+      height: 64px;
+      image-rendering: pixelated;
+    }
+
+    .hp-bar-container {
+      width: 100px;
+      background-color: #ccc;
+      border: 1px solid #000;
+      border-radius: 6px;
+      margin-top: 5px;
+      overflow: hidden;
+    }
+
+    .hp-bar {
+      height: 16px;
+      background-color: #4caf50;
+      text-align: center;
+      color: white;
+      font-size: 12px;
+      line-height: 16px;
+      transition: width 0.3s ease;
+    }
+
+    #action-buttons {
+      text-align: center;
+      display: none;
+      margin: 10px 0;
+    }
+
+    #action-buttons button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+
+    #question {
+      text-align: center;
+      display: none;
+      margin: 20px 0;
+    }
+
+    #answerButtons button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+
+    #log {
+      text-align: center;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    #score {
+      text-align: center;
+      font-weight: bold;
+    }
+
+    #reset-btn {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>⚔️ English Battle ⚔️</h1>
+
+  <div id="difficulty-select">
+    <p>เลือกระดับความยาก:</p>
+    <button onclick="initGame('Easy')">Easy</button>
+    <button onclick="initGame('Normal')">Normal</button>
+    <button onclick="initGame('Hard')">Hard</button>
+     <button onclick="initGame('Lunatic')">Lunatic</button>
+  </div>
+
+<div id="battle-container" style="display: none;">
+  <div class="character">
+<img id="player-img" src="assets/texture/player/P1_IDLE.gif" alt="Player" width="64" height="64" />
+    <div class="hp-bar-container">
+      <div id="player-hp-bar" class="hp-bar" data-max="100">100</div>
+    </div>
+  </div>
+
+  <div class="character">
+    <img id="enemy-img" src="assets/enemy/E1_Idle.gif" alt="Enemy" width="64" height="64" />
+    <div class="hp-bar-container">
+      <div id="enemy-hp-bar" class="hp-bar" data-max="100">100</div>
+    </div>
+  </div>
+</div>
+
+  <div id="action-buttons">
+    <button onclick="playerAction('attack')">🔪 โจมตี</button>
+    <button onclick="playerAction('guard')">🛡️ ป้องกัน</button>
+  </div>
+
+  <div id="question">
+    <p id="question-text">❓ คำถามจะอยู่ที่นี่</p>
+    <div id="answerButtons"></div>
+  </div>
+
+  <div id="log"></div>
+  <div id="score">Score: 0</div>
+  <button id="reset-btn" onclick="resetGame()">เริ่มใหม่</button>
+
+  <script src="questions.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
