@@ -114,17 +114,17 @@ function checkAnswer(choice, correct) {
     }, 1500);
   } else {
     setTimeout(() => {
-      elements.actionButtons.style.display = "block";
-      elements.questionText.textContent = "";
-      elements.answerButtons.innerHTML = "";
-    }, 1200);
+  elements.actionButtons.style.display = "block";
+  elements.questionText.textContent = "";
+  elements.answerButtons.innerHTML = "";
+}, 1200);
   }
 }
 
 function calculateDamage(base, target, guarding) {
   const reduction = {
-    Player: { Easy: 0.65, Normal: 0.5, Hard: 0.2, Lunatic: 0.15 },
-    Enemy: { Easy: 0.10, Normal: 0.25, Hard: 0.5, Lunatic: 0.25}
+    Player: { Easy: 0.65, Normal: 0.25, Hard: 0.2, Lunatic: 0.15 },
+    Enemy: { Easy: 0.15, Normal: 0.25, Hard: 0.5, Lunatic: 0.25}
   };
   const rate = reduction[target][currentDifficulty];
   return guarding ? Math.round(base * (1 - rate)) : base;
